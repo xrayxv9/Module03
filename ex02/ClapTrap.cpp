@@ -1,11 +1,6 @@
 #include "ClapTrap.hpp"
 #include <string>
 
-ClapTrap::ClapTrap( void ) : name("default"), hitPoints(10), energyPoint(10), attackDamage(0)
-{
-	std::cout << name << " Enters into the arena !!" << std::endl;
-}
-
 ClapTrap::ClapTrap( std::string name )
 {
 	std::cout << name << " Enters into the arena !!" << std::endl;
@@ -15,9 +10,14 @@ ClapTrap::ClapTrap( std::string name )
 	this->attackDamage = 0;
 }
 
-ClapTrap::~ClapTrap( void )
+ClapTrap::ClapTrap( void ) : name("default"), hitPoints(10), energyPoint(10), attackDamage(0)
 {
-	std::cout << this->name << " Exits the arena after a beautiful fight !" << std::endl;
+	std::cout << name << " Enters into the arena !!" << std::endl;
+}
+
+ClapTrap::~ClapTrap()
+{
+	std::cout << this->name << " Exits the arena after a beautiful fight !" << std::endl;	
 }
 
 ClapTrap& ClapTrap::operator=( const ClapTrap& self )
@@ -73,15 +73,4 @@ void ClapTrap::beRepaired ( unsigned int amount )
 	else 
 		std::cout << "Sorry You couldn't perform this action because "
 			<< (this->energyPoint ? "you didn't have enough life" : "you didn't have enough energy") << std::endl;
-}
-
-void ClapTrap::print( std::ostream& o ) const
-{
-	o << this->name + " has " << this->hitPoints <<  " hp and " << this->energyPoint << " energy left";
-}
-
-std::ostream &operator<<( std::ostream& o, const ClapTrap &self )
-{
-	self.print(o);
-	return o;
 }

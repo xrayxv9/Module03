@@ -6,8 +6,8 @@ class ClapTrap
 {
 	public:
 		ClapTrap( std::string name );
-		ClapTrap( void	);
-		~ClapTrap( void );
+		ClapTrap( void );
+		virtual ~ClapTrap( void );
 		ClapTrap( const ClapTrap &self );
 		ClapTrap &operator=( const ClapTrap& self );
 
@@ -19,13 +19,9 @@ class ClapTrap
 		void beRepaired( unsigned int amount );
 
 
-	private:
+	protected:
 		std::string name;
 		int			hitPoints;
 		int			energyPoint;
 		int			attackDamage;
 };
-
-
-std::ostream& operator<<( std::ostream& o, ClapTrap const& self);
-
